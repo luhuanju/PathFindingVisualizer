@@ -128,6 +128,7 @@ class Board extends React.Component {
           );
           Board.delayAnimation = result[0];
           var max = result[2];
+          
           this.setState({})
 
           if(result[1].length==0) return;
