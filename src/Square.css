@@ -1,0 +1,147 @@
+.unvisited {
+  background: #fff;
+  border: solid 1px rgb(175, 216, 248);
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  /* rgb(12, 53, 71)*/
+}
+
+.start {
+  background: forestgreen;
+  border: solid 1px rgb(175, 216, 248);
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  /* rgb(12, 53, 71)*/
+}
+
+.wall {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  border: solid 1px #34495e;
+  background: #34495e;
+}
+.wall {
+  animation-name: wallAnimation;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  border: solid 1px #34495e;
+  background: #34495e;
+}
+.end {
+  animation-name: endAnimation;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  border: solid 1px #c20b04;
+  background: #c20b04;
+}
+
+@keyframes endAnimation {
+  0% {
+    transform: scale(.3);
+    background-color: #c20b04;
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #c20b04;
+  }
+
+  100% {
+    transform: scale(1.0);
+    background-color: #c20b04;
+  }
+}
+
+@keyframes wallAnimation {
+  0% {
+    transform: scale(.3);
+    background-color: rgb(12, 53, 71);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: rgb(12, 53, 71);
+  }
+
+  100% {
+    transform: scale(1.0);
+    background-color: rgb(12, 53, 71);
+  }
+}
+
+@keyframes first
+{
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    100% {background: green;}
+}
+
+
+@keyframes visitedAnimation {
+  0% {
+    transform: scale(.3);
+    background-color: rgba(0, 0, 66, 0.75);
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: rgba(17, 104, 217, 0.75);
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: rgba(0, 217, 159, 0.75)
+  }
+
+  100% {
+    transform: scale(1.0);
+    background-color: rgba(0, 190, 218, 0.75);
+  }
+}
+
+@keyframes flyInFromBottom {
+  0%{
+      opacity: 0;
+      transform: translateY(100vh);
+  }
+  100%{
+      opacity: 1;
+  }
+}
