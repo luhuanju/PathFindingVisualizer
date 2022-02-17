@@ -1,0 +1,77 @@
+#topHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 1rem;
+  height: 60px;
+  font-size: 1.2rem;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.startinfo {
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  display:inline-block;
+  background-color: forestgreen;
+}
+
+.endinfo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGc9W4iqzZeAXa7AsRNOC6QDOPjEJ_IiHi2A&usqp=CAU');
+  background-size: 25px;
+  /* background: #c20b04; */
+  border: solid 1px rgb(175, 216, 248);
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  /* rgb(12, 53, 71)*/
+}
+
+.wallinfo {
+  animation-name: wallAnimation;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+  border: solid 1px #34495e;
+  background: #34495e;
+}
+
+.unvisitedinfo {
+  background: #fff;
+  border: solid 1px rgb(175, 216, 248);
+  height: 25px;
+  width: 25px;
+  margin-right: -1px;
+  margin-top: -3px;
+  padding: 0;
+}
+
+p {
+  margin-left: 5px;
+}
+
+#textinfo {
+  padding: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+}

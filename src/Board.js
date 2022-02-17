@@ -1,10 +1,10 @@
 import React, { createRef } from "react";
 import Square from "./Square";
 import Algo from "./Algo";
-
+import TopHeader from "./TopHeader";
 class Board extends React.Component {
   rows = 20;
-  columns = 50;
+  columns = 40;
   index = 0;
   static squareStates = [];
 
@@ -86,16 +86,9 @@ class Board extends React.Component {
     return (
       <div className="panel">
 
-        <div id="header"
-        >
-          
+        <div className="header">
         </div>
-
-
-
-
-
-
+        <TopHeader></TopHeader>
         <div className="row" key={this.row_key++}>
           {this.state.squares.map((row, i) => {
             return (

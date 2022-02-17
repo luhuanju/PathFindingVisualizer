@@ -162,3 +162,14 @@
       opacity: 1;
   }
 }
+
+.row{
+  width:fit-content;
+  margin: 0 auto;
+
+}
+.header{
+  height: 100px;
+  width: 100%;
+  background-color: rgb(12, 53, 71);
+}
