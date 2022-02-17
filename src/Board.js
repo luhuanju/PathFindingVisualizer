@@ -19,16 +19,19 @@ class Board extends React.Component {
       />
     );
   }
+
   constructor(props) {
     super(props);
     this.clickSquare = this.clickSquare.bind(this);
+    this.virtualization = this.virtualization.bind(this);
+    this.clearCanvas = this.clearCanvas.bind(this);
     this.state = {
       squares: [],
       tag: false,
     };
   }
 
-  componentDidMount() {
+  load() {
     const cells = [];
     for (let row = 0; row < this.rows; row++) {
       const curRow = [];
@@ -53,9 +56,17 @@ class Board extends React.Component {
       squares: cells,
     });
   }
+  componentDidMount() {
+    this.load();
+  }
 
   static delayAnimation = {};
 
+  clearCanvas() {
+    Board.delayAnimation={}
+    Board.squareStates = [];
+    this.load();
+  }
   virtualization() {
     for (var i = 0; i < this.rows; i++) {
       for (var j = 0; j < this.columns; j++) {
@@ -85,10 +96,10 @@ class Board extends React.Component {
   render() {
     return (
       <div className="panel">
-
-        <div className="header">
-        </div>
-        <TopHeader></TopHeader>
+        <TopHeader
+          onclick={this.virtualization}
+          onclear={this.clearCanvas}
+        ></TopHeader>
         <div className="row" key={this.row_key++}>
           {this.state.squares.map((row, i) => {
             return (
@@ -100,14 +111,6 @@ class Board extends React.Component {
             );
           })}
         </div>
-        <button
-          className="search"
-          onClick={() => {
-            this.virtualization();
-          }}
-        >
-          start search{" "}
-        </button>
       </div>
     );
   }

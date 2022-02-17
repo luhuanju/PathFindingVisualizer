@@ -9,6 +9,16 @@ class TopHeader extends React.Component {
   render() {
     return (
       <div>
+        <div className="header">
+          <div className="parent">
+            <button className="visualize"
+            onClick={this.props.onclick}
+            >Visualize!</button>
+            <button className="visualize"
+              onClick={this.props.onclear}
+            >Clear Canvas!</button>
+          </div>
+        </div>
         <div id="topHeader">
           <div className="info">
             <div className="startinfo"></div>
