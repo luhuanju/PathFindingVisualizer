@@ -3,109 +3,118 @@ import Square from "./Square";
 import Algo from "./Algo";
 
 class Board extends React.Component {
-   rows = 20;
-   columns = 30;
-   index=0;
+  rows = 20;
+  columns = 50;
+  index = 0;
+  static squareStates = [];
 
+  createSquareComponent(row, col, state, delay) {
+    return (
+      <Square
+        key={(row, col)}
+        className={state}
+        coordinate={[row, col]}
+        animation={delay}
+        onclick={this.clickSquare}
+      />
+    );
+  }
   constructor(props) {
     super(props);
-    // alert("some")
     this.clickSquare = this.clickSquare.bind(this);
     this.state = {
       squares: [],
-      animation: [],
-      button: "unvisited",
-      traversePath: false
+      tag: false,
     };
   }
 
-
-  
-
   componentDidMount() {
-    // const cells = [];
-    const states = [];
-    for (let i = 0; i < this.rows; i++) {
+    const cells = [];
+    for (let row = 0; row < this.rows; row++) {
       const curRow = [];
-      const curRowStates = [];
-      states.push(curRowStates);
-      for (let j = 0; j < this.columns; j++) {
-        // mock start node
-        if(i===15 && j==15){
-          curRowStates.push(Square.START);
-        }else if(i===this.rows-1 && j==this.columns-1){
-          curRowStates.push(Square.END);
+      const rowStates = [];
+      for (let col = 0; col < this.columns; col++) {
+        var state = Square.UNVISITED;
+        if (row == 2 && col == 2) {
+          state = Square.START;
+        } else if (row == this.rows - 1 && col == this.columns - 1) {
+          state = Square.DESTINATION;
         }
-        else{
-          curRowStates.push(Square.UNVISITED);
-        }
-        curRow.push(
-          <Square
-            className={Square.UNVISITED}
-          ></Square>
-        );
+        curRow.push({
+          state: state,
+          component: this.createSquareComponent(row, col, state),
+        });
+        rowStates.push(state);
       }
-      this.state.squares.push(curRow);
-    }
-    for(let i=0; i <20;i++){
-      let i=Math.floor(Math.random() * this.rows)
-      let j=Math.floor(Math.random() * this.columns)
-      this.state.animation.push([i,j]);
+      cells.push(curRow);
+      Board.squareStates.push(rowStates);
     }
     this.setState({
-      squareStates: states });
+      squares: cells,
+    });
   }
-  /**
-   * call back function when a square fot clicked 
-   * @param {*} coordinate 
-   * @param {*} state 
-   */
 
-  static map={};
-  clickSquare(coordinate,state,update) {
-    const row=coordinate[0]
-    const col=coordinate[1]
-    //update this cell state
-    this.state.squareStates[row][col] = state;
+  static delayAnimation = {};
 
-    Board.map = Algo.bfsTraverse(this.rows,this.columns,row,col);
-
-    //update
-    if(update){
-      this.setState({ 
-        traversePath: true,
-        squares: this.state.squareStates });
+  virtualization() {
+    for (var i = 0; i < this.rows; i++) {
+      for (var j = 0; j < this.columns; j++) {
+        if (Board.squareStates[i][j] == Square.START) {
+          Board.delayAnimation = Algo.bfsTraverse(
+            this.rows,
+            this.columns,
+            i,
+            j,
+            Board.squareStates
+          );
+          this.setState({
+            // squares: this.state.squares
+            tag: !this.state.tag,
+          });
+        }
+      }
     }
   }
-
-  startingTraversePath(i,j){
-    return (this.state.squareStates[i][j]===Square.UNVISITED)
+  clickSquare(coordinate, state, updateParent) {
+    let row = coordinate[0];
+    let col = coordinate[1];
   }
 
+  row_key = 0;
+  col_Key = 0;
   render() {
     return (
-      <div className="row">
-        {this.state.squares.map((row, i) => {
-          return (
-            <div className="column">
-              {row.map((square, j) => {
-                // return square;
-                this.index=this.index+1
-                
-                return (
-                  <Square
-                    index={this.index}
-                    traversePath={this.state.traversePath}
-                    animation={Board.map[[i,j]]}
-                    coordinate={[i, j]}
-                    className={this.state.squareStates[i][j]}
-                    onclick={this.clickSquare}
-                  ></Square>
-                );
-              })}
-            </div>
-          );
-        })}
+      <div className="panel">
+
+        <div id="header"
+        >
+          
+        </div>
+
+
+
+
+
+
+        <div className="row" key={this.row_key++}>
+          {this.state.squares.map((row, i) => {
+            return (
+              <div className="column" key={this.col_Key++}>
+                {row.map((square, j) => {
+                  return square["component"];
+                })}
+              </div>
+            );
+          })}
+        </div>
+        <button
+          className="search"
+          onClick={() => {
+            this.virtualization();
+          }}
+        >
+          start search{" "}
+        </button>
       </div>
     );
   }
