@@ -7,6 +7,7 @@ class Square extends React.Component {
   static WALL = "wall";
   static START = "start";
   static DESTINATION = "destination";
+  static VISITED = "visited";
 
   static END = "end";
   static PATH = "path";
@@ -29,6 +30,7 @@ class Square extends React.Component {
     var delayTime =Board.delayAnimation[[this.row, this.col]];
     // console.log(Board.delayAnimation)
     if (delayTime != undefined) {
+      // Board.squareStates[this.row][this.col]=Square.VISITED
       return {
         animation:
           "visitedAnimation 1s ease " +
@@ -70,7 +72,8 @@ class Square extends React.Component {
                 className: Square.DESTINATION,
               });
             } else if (
-              Board.squareStates[this.row][this.col] == Square.UNVISITED
+              Board.squareStates[this.row][this.col] == Square.UNVISITED||
+              Board.squareStates[this.row][this.col] == Square.VISITED
             ) {
               Board.squareStates[this.row][this.col] = Square.WALL;
               this.setState({

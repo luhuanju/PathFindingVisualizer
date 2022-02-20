@@ -1,9 +1,21 @@
 import Square from "./Square";
 
+
+class Node{
+  constructor(row, col){
+    this.row=row;
+    this.col=col;
+  }
+}
 export default class Algo {
   static bfsTraverse(n, m, row, col, data) {
     let map = {};
-    var findDestination=false
+    let pre = {};
+    var findDestination=false;
+
+    let end=[]
+    
+
     let level = 0;
     var dict = [
       [1, 0],
@@ -18,6 +30,7 @@ export default class Algo {
     var queue = [];
     queue.push([row, col]);
     var hash = new Set();
+
     hash.add("" + [row, col]);
     while (queue.length > 0) {
       level++;
@@ -41,18 +54,36 @@ export default class Algo {
           ) {
           } else if (data[new_x][new_y] == Square.UNVISITED) {
             queue.push([new_x, new_y]);
+            pre[[new_x, new_y]] = node
             hash.add("" + [new_x, new_y]);
           }
           else if (data[new_x][new_y] == Square.DESTINATION) {
             findDestination=true
+            end= [new_x,new_y]
             queue.push([new_x, new_y]);
+            pre[[new_x, new_y]] = node
             hash.add("" + [new_x, new_y]);
           }
         }
       }
       if(findDestination){ 
+        var shortest= []
+        let preNode=pre[end];
+        while (preNode!= undefined){
+          shortest.unshift(preNode)
+          preNode= pre[preNode];
+        }
+
         console.log('=>'+map);
         delete map[[row, col]];
+
+        // level=1;
+        // map ={}
+        // for( let z = 0; z<shortest.length; z++){
+         
+        //   map[shortest[z]]=  level++;
+        // }
+
         return map;}
     }
     delete map[[row, col]];

@@ -37,7 +37,7 @@
   /* rgb(12, 53, 71)*/
 }
 
-.wall {
+/* .wall {
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
   animation-delay: 0;
@@ -52,7 +52,7 @@
   padding: 0;
   border: solid 1px #34495e;
   background: #34495e;
-}
+} */
 .wall {
   animation-name: wallAnimation;
   animation-duration: 0.3s;
@@ -106,15 +106,15 @@
 }
 
 @keyframes wallAnimation {
-  0% {
+  /* 0% {
     transform: scale(.3);
     background-color: rgb(12, 53, 71);
-  }
+  } */
 
-  50% {
-    transform: scale(1.2);
+  /* 50% {
+    transform: scale(1);
     background-color: rgb(12, 53, 71);
-  }
+  } */
 
   100% {
     transform: scale(1.0);

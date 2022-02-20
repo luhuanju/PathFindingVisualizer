@@ -31,6 +31,14 @@
   line-height: 1.4;
   border-radius: 4px;
 }
+.visualize:focus{
+  background-color: #85c5b8;
+  color: #fff;
+}
+
+
+
+
 .info {
   flex: 1;
   display: flex;

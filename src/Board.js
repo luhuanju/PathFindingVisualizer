@@ -2,11 +2,13 @@ import React, { createRef } from "react";
 import Square from "./Square";
 import Algo from "./Algo";
 import TopHeader from "./TopHeader";
+import QcEventEmitter from "./QcEventEmitter";
 class Board extends React.Component {
-  rows = 20;
-  columns = 40;
+  rows = 25;
+  columns = 25;
   index = 0;
   static squareStates = [];
+
 
   createSquareComponent(row, col, state, delay) {
     return (
@@ -68,6 +70,7 @@ class Board extends React.Component {
     this.load();
   }
   virtualization() {
+    QcEventEmitter.emit('contextClick',10,10)
     for (var i = 0; i < this.rows; i++) {
       for (var j = 0; j < this.columns; j++) {
         if (Board.squareStates[i][j] == Square.START) {
@@ -79,8 +82,6 @@ class Board extends React.Component {
             Board.squareStates
           );
           this.setState({
-            // squares: this.state.squares
-            tag: !this.state.tag,
           });
         }
       }
