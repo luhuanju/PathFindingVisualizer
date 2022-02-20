@@ -26,20 +26,26 @@ class Square extends React.Component {
     };
   }
   animationStyle() {
-    // if(Board.squareStates[this.row][this.col]==Square.UNVISITED) return;
-    var delayTime =Board.delayAnimation[[this.row, this.col]];
-    // console.log(Board.delayAnimation)
-    if (delayTime != undefined) {
-      // Board.squareStates[this.row][this.col]=Square.VISITED
-      return {
-        animation:
-          "visitedAnimation 1s ease " +
-          // ((this.props.animation[1] +this.props.animation[0])+1) * 0.1
-          delayTime * 0.1 +
-          "s" +
-          " forwards",
-      };
-    }
+
+    // if(Board.delayTime.length>0){
+      var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
+      if (pathAnimationDelay != undefined) {
+        return {
+          animation:
+            "flyInFromBottom 1s ease " +(pathAnimationDelay) * 0.1 +"s" +" forwards",
+        };
+      }
+    // }
+    // else{
+      var delayTime = Board.delayAnimation[[this.row, this.col]];
+      if (delayTime != undefined) {
+        return {
+          animation:
+            "visitedAnimation 1s ease " + delayTime * 0.1 + "s" + " forwards",
+        };
+      }
+    // }
+    
   }
 
   render() {
@@ -72,7 +78,7 @@ class Square extends React.Component {
                 className: Square.DESTINATION,
               });
             } else if (
-              Board.squareStates[this.row][this.col] == Square.UNVISITED||
+              Board.squareStates[this.row][this.col] == Square.UNVISITED ||
               Board.squareStates[this.row][this.col] == Square.VISITED
             ) {
               Board.squareStates[this.row][this.col] = Square.WALL;

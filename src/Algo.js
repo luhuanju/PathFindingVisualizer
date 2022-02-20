@@ -1,27 +1,18 @@
+import Board from "./Board";
 import Square from "./Square";
-
-
-class Node{
-  constructor(row, col){
-    this.row=row;
-    this.col=col;
-  }
-}
 export default class Algo {
   static bfsTraverse(n, m, row, col, data) {
     let map = {};
     let pre = {};
-    var findDestination=false;
+    var findDestination = false;
 
-    let end=[]
-    
-
+    let end = [];
     let level = 0;
     var dict = [
       [1, 0],
       [-1, 0],
       [0, 1],
-      [0, -1]
+      [0, -1],
       // [-1, -1],
       // [1, -1],
       // [1, 1],
@@ -40,7 +31,7 @@ export default class Algo {
         var x = node[0];
         var y = node[1];
         map[[x, y]] = level;
-        
+
         for (let i = 0; i < 4; i++) {
           var dic = dict[i];
           var new_x = dic[0] + x;
@@ -54,37 +45,28 @@ export default class Algo {
           ) {
           } else if (data[new_x][new_y] == Square.UNVISITED) {
             queue.push([new_x, new_y]);
-            pre[[new_x, new_y]] = node
+            pre[[new_x, new_y]] = node;
             hash.add("" + [new_x, new_y]);
-          }
-          else if (data[new_x][new_y] == Square.DESTINATION) {
-            findDestination=true
-            end= [new_x,new_y]
+          } else if (data[new_x][new_y] == Square.DESTINATION) {
+            findDestination = true;
+            end = [new_x, new_y];
             queue.push([new_x, new_y]);
-            pre[[new_x, new_y]] = node
+            pre[[new_x, new_y]] = node;
             hash.add("" + [new_x, new_y]);
           }
         }
       }
-      if(findDestination){ 
-        var shortest= []
-        let preNode=pre[end];
-        while (preNode!= undefined){
-          shortest.unshift(preNode)
-          preNode= pre[preNode];
+      if (findDestination) {
+        var shortest = [];
+        let preNode = pre[end];
+        while (preNode != undefined) {
+          shortest.unshift(preNode);
+          preNode = pre[preNode];
         }
-
-        console.log('=>'+map);
         delete map[[row, col]];
-
-        // level=1;
-        // map ={}
-        // for( let z = 0; z<shortest.length; z++){
-         
-        //   map[shortest[z]]=  level++;
-        // }
-
-        return map;}
+        Board.pathAnimation = shortest;
+        return [map,shortest,level];
+      }
     }
     delete map[[row, col]];
     console.log(map);

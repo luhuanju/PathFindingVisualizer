@@ -1,20 +1,20 @@
 .unvisited {
   background: #fff;
   border: solid 1px rgb(175, 216, 248);
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
   /* rgb(12, 53, 71)*/
 }
 .destination {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGc9W4iqzZeAXa7AsRNOC6QDOPjEJ_IiHi2A&usqp=CAU');
+  background-image: url('https://www.svgrepo.com/show/146752/goal.svg');
   background-size: 25px;
   /* background: #c20b04; */
   border: solid 1px rgb(175, 216, 248);
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -26,11 +26,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size:cover;
-  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ7bIiTSoiGGkKHXP0s8bsFgwbASomH16aNg&usqp=CAU'); */
-  background: forestgreen;
+  transform: rotate(90deg);
+  background-image: url('https://www.svgrepo.com/show/257007/up-arrow.svg');
+  /* background: forestgreen; */
   border: solid 1px rgb(175, 216, 248);
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -62,8 +63,8 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -79,8 +80,8 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
-  height: 25px;
-  width: 25px;
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -157,9 +158,13 @@
   0%{
       opacity: 0;
       transform: translateY(100vh);
+      transform: scale(1.0);
+      background-color: darkorange;
   }
   100%{
       opacity: 1;
+      transform: scale(1.0);
+      background-color: darkorange;
   }
 }
 
