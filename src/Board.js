@@ -4,8 +4,8 @@ import Algo from "./Algo";
 import TopHeader from "./TopHeader";
 import QcEventEmitter from "./QcEventEmitter";
 class Board extends React.Component {
-  rows = 30;
-  columns = 30;
+  rows = 20;
+  columns = 40;
   index = 0;
   static squareStates = [];
   static run = false;
