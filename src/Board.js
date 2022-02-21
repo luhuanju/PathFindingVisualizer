@@ -27,6 +27,8 @@ class Board extends React.Component {
     this.clickSquare = this.clickSquare.bind(this);
     this.virtualization = this.virtualization.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.generateMaze = this.generateMaze.bind(this);
+    
     this.state = {
       squares: [],
       tag: false,
@@ -47,6 +49,13 @@ class Board extends React.Component {
           col == Math.ceil(this.columns / 2)
         ) {
           state = Square.DESTINATION;
+        }
+        else{
+          var rand = Boolean(Math.round(Math.random()));
+          var rand1 = Boolean(Math.round(Math.random()));
+          if(rand && rand1){
+            state=Square.WALL;
+          }
         }
         curRow.push({
           state: state,
@@ -69,7 +78,7 @@ class Board extends React.Component {
   static delayTime = {};
 
   clearCanvas() {
-    Board.delayAnimation = {};
+    Board.delayAnimation={}
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.columns; j++) {
         if (Board.squareStates[i][j] === Square.WALL) {
@@ -80,8 +89,32 @@ class Board extends React.Component {
     this.setState({});
   }
 
+
+  generateMaze() {
+    Board.delayAnimation=new Map();
+    Board.delayTime = {};
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.columns; j++) {
+        if (Board.squareStates[i][j] == Square.START || Board.squareStates[i][j] == Square.DESTINATION ) {
+        }
+        else{
+          if(Board.squareStates[i][j]==Square.WALL){
+            Board.squareStates[i][j]=Square.UNVISITED
+          }
+          var rand = Boolean(Math.round(Math.random()));
+          var rand1 = Boolean(Math.round(Math.random()));
+          if(rand && rand1){
+            Board.squareStates[i][j]=Square.WALL;
+          }
+        }
+      }
+    }
+    this.setState({});
+  }
+
   virtualization() {
     // QcEventEmitter.emit('contextClick',10,10)
+    // Board.delayAnimation=new Map();
     for (var i = 0; i < this.rows; i++) {
       for (var j = 0; j < this.columns; j++) {
         if (Board.squareStates[i][j] == Square.START) {
@@ -95,6 +128,7 @@ class Board extends React.Component {
           Board.delayAnimation = result[0];
           var max = result[2];
           this.setState({}, () => {
+            if(result[1].length==0) return;
             for (let k = 0; k < result[1].length; k++) {
               max++;
               Board.delayTime[result[1][k]] = max;
@@ -119,6 +153,7 @@ class Board extends React.Component {
         <TopHeader
           onclick={this.virtualization}
           onclear={this.clearCanvas}
+          ongenerate={this.generateMaze}
         ></TopHeader>
         <div className="row" key={this.row_key++}>
           {this.state.squares.map((row, i) => {

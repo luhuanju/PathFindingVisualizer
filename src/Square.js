@@ -27,25 +27,24 @@ class Square extends React.Component {
   }
   animationStyle() {
 
-    // if(Board.delayTime.length>0){
-      var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
-      if (pathAnimationDelay != undefined) {
-        return {
-          animation:
-            "flyInFromBottom 1s ease " +(pathAnimationDelay) * 0.1 +"s" +" forwards",
-        };
-      }
-    // }
-    // else{
-      var delayTime = Board.delayAnimation[[this.row, this.col]];
-      if (delayTime != undefined) {
-        return {
-          animation:
-            "visitedAnimation 1s ease " + delayTime * 0.1 + "s" + " forwards",
-        };
-      }
-    // }
-    
+    if(Board.squareStates[this.row][this.col]==Square.WALL) return;
+    // if(Board.delayTime.size)
+    var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
+    if (pathAnimationDelay != undefined) {
+      return {
+        animation:
+          "flyInFromBottom 1s ease " +(3 + pathAnimationDelay) * 0.1 +"s" +" forwards",
+      };
+    }
+    if(Board.delayAnimation==undefined) return;
+    console.log(Board.delayAnimation)
+    var delayTime = Board.delayAnimation[[this.row, this.col]];
+    if (delayTime != undefined) {
+      return {
+        animation:
+          "visitedAnimation 1s ease " + delayTime * 0.1 + "s" + " forwards"
+      };
+    }
   }
 
   render() {

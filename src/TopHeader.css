@@ -48,24 +48,29 @@
 }
 
 .startinfo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
   top: 50%;
-  width: 25px;
-  height: 25px;
   display:inline-block;
-  background-color: forestgreen;
-}
-
-.endinfo {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGc9W4iqzZeAXa7AsRNOC6QDOPjEJ_IiHi2A&usqp=CAU');
-  background-size: 25px;
-  /* background: #c20b04; */
-  border: solid 1px rgb(175, 216, 248);
-  height: 25px;
-  width: 25px;
+  transform: rotate(90deg);
+  background-image: url('https://www.svgrepo.com/show/257007/up-arrow.svg');
+  /* background: forestgreen; */
+  /* border: solid 1px rgb(175, 216, 248); */
+  height: 28px;
+  width: 28px;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
-  /* rgb(12, 53, 71)*/
+}
+
+.endinfo {
+  background-image: url('https://www.svgrepo.com/show/146752/goal.svg');
+  /* background: #c20b04; */
+  /* border: solid 1px rgb(175, 216, 248); */
+  height: 28px;
+  width: 28px;
+  padding: 0;
 }
 
 .wallinfo {
@@ -105,3 +110,42 @@ p {
   width: fit-content;
   margin: 0 auto;
 }
+
+
+
+.button {
+  font-family: arial;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #FFFFFF !important;
+  font-size: 13px;
+  text-shadow: 2px 1px 0px #7CACDE;
+  /* box-shadow: 1px 1px 1px #BEE2F9; */
+  padding: 13px 27px;
+  border-radius: 8px;
+  border: 0px solid #3866A3;
+  background: #1ABC9C;
+}
+.button:hover {
+  color: #FFFFFF !important;
+  background: #8CCFC1;
+}
+
+
+.dropdown__menu {
+  position: absolute;
+  min-width: 15ch;
+  left: 50%;
+  top: calc(100% - 0.25rem);
+  transition: 280ms all 120ms ease-out;;
+  transform: rotateX(-90deg) translateX(-50%);
+  transform-origin: top center;
+  visibility: hidden;
+  opacity: 0.3;
+  padding: 0.5em 0;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0.15em 0.25em rgba(black, 0.25)
+};
+
+

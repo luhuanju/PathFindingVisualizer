@@ -11,12 +11,19 @@ class TopHeader extends React.Component {
       <div>
         <div className="header">
           <div className="parent">
-            <button className="visualize"
-            onClick={this.props.onclick}
-            >Visualize!</button>
-            <button className="visualize"
-              onClick={this.props.onclear}
-            >Clear Canvas!</button>
+            <div>
+            </div>
+            <button className="button" onClick={this.props.onclick}>
+              Visualize!
+            </button>
+            <button className="button" onClick={this.props.ongenerate}>
+              Generate Maze!
+            </button>
+            <button className="button" onClick={this.props.onclear}>
+              Clear Canvas!
+            </button>
+            
+            
           </div>
         </div>
         <div id="topHeader">

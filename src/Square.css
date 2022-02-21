@@ -131,7 +131,9 @@
     100% {background: green;}
 }
 
-
+.pathAnimation{
+  animation: visitedAnimation 1s,a2 1s infinite 1s;
+}
 @keyframes visitedAnimation {
   0% {
     transform: scale(.3);
