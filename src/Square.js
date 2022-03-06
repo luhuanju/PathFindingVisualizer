@@ -3,6 +3,7 @@ import Board from "./Board";
 import "./Square.css";
 
 class Square extends React.Component {
+  static count=0;
   static UNVISITED = "unvisited";
   static WALL = "wall";
   static START = "start";
@@ -26,25 +27,45 @@ class Square extends React.Component {
     };
   }
   animationStyle() {
+    Square.count++;
+    console.log(Square.count);
 
     if(Board.squareStates[this.row][this.col]==Square.WALL) return;
-    // if(Board.delayTime.size)
-    var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
-    if (pathAnimationDelay != undefined) {
+    if(Board.delayAnimation!=undefined && Board.delayAnimation[[this.row, this.col]]!=undefined){
+      var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
       return {
         animation:
           "flyInFromBottom 1s ease " +(3 + pathAnimationDelay) * 0.1 +"s" +" forwards",
       };
     }
-    if(Board.delayAnimation==undefined) return;
-    console.log(Board.delayAnimation)
-    var delayTime = Board.delayAnimation[[this.row, this.col]];
-    if (delayTime != undefined) {
+
+    if(Board.delayTime[[this.row, this.col]]!=undefined){
+      var delayTime = Board.delayAnimation[[this.row, this.col]];
       return {
         animation:
           "visitedAnimation 1s ease " + delayTime * 0.1 + "s" + " forwards"
       };
     }
+    // if(Board.delayAnimation==undefined) return;
+    // var delayTime = Board.delayAnimation[[this.row, this.col]];
+    // if(delayTime==undefined) return;
+
+    // // if(Board.delayTime.size)
+    // var pathAnimationDelay = Board.delayTime[[this.row, this.col]];
+    // if (pathAnimationDelay != undefined) {
+    //   return {
+    //     animation:
+    //       "flyInFromBottom 1s ease " +(3 + pathAnimationDelay) * 0.1 +"s" +" forwards",
+    //   };
+    // }
+    // if(Board.delayAnimation==undefined) return;
+    // var delayTime = Board.delayAnimation[[this.row, this.col]];
+    // if (delayTime != undefined) {
+    //   return {
+    //     animation:
+    //       "visitedAnimation 1s ease " + delayTime * 0.1 + "s" + " forwards"
+    //   };
+    // }
   }
 
   render() {

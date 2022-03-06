@@ -1,8 +1,8 @@
 .unvisited {
   background: #fff;
   border: solid 1px rgb(175, 216, 248);
-  height: 28px;
-  width: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -10,11 +10,11 @@
 }
 .destination {
   background-image: url('https://www.svgrepo.com/show/146752/goal.svg');
-  background-size: 25px;
+  background-size: 1.5rem;
   /* background: #c20b04; */
   border: solid 1px rgb(175, 216, 248);
-  height: 28px;
-  width: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -30,8 +30,8 @@
   background-image: url('https://www.svgrepo.com/show/257007/up-arrow.svg');
   /* background: forestgreen; */
   border: solid 1px rgb(175, 216, 248);
-  height: 28px;
-  width: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -63,8 +63,8 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
-  height: 28px;
-  width: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;
@@ -80,8 +80,8 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
-  height: 28px;
-  width: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-right: -1px;
   margin-top: -3px;
   padding: 0;

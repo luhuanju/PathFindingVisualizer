@@ -4,8 +4,8 @@ import Algo from "./Algo";
 import TopHeader from "./TopHeader";
 import QcEventEmitter from "./QcEventEmitter";
 class Board extends React.Component {
-  rows = 20;
-  columns = 40;
+  rows = 5;
+  columns = 5;
   index = 0;
   static squareStates = [];
   static run = false;
@@ -50,13 +50,13 @@ class Board extends React.Component {
         ) {
           state = Square.DESTINATION;
         }
-        else{
-          var rand = Boolean(Math.round(Math.random()));
-          var rand1 = Boolean(Math.round(Math.random()));
-          if(rand && rand1){
-            state=Square.WALL;
-          }
-        }
+        // else{
+        //   var rand = Boolean(Math.round(Math.random()));
+        //   var rand1 = Boolean(Math.round(Math.random()));
+        //   if(rand && rand1){
+        //     state=Square.WALL;
+        //   }
+        // }
         curRow.push({
           state: state,
           component: this.createSquareComponent(row, col, state),
@@ -79,6 +79,7 @@ class Board extends React.Component {
 
   clearCanvas() {
     Board.delayAnimation={}
+    Board.delayTime = {};
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.columns; j++) {
         if (Board.squareStates[i][j] === Square.WALL) {
@@ -127,14 +128,24 @@ class Board extends React.Component {
           );
           Board.delayAnimation = result[0];
           var max = result[2];
-          this.setState({}, () => {
-            if(result[1].length==0) return;
+          this.setState({})
+
+          if(result[1].length==0) return;
             for (let k = 0; k < result[1].length; k++) {
               max++;
               Board.delayTime[result[1][k]] = max;
             }
-            this.setState({});
-          });
+            Board.delayTime =  Board.delayTime;
+            // this.setState({});˜
+
+          // this.setState({}, () => {
+          //   if(result[1].length==0) return;
+          //   for (let k = 0; k < result[1].length; k++) {
+          //     max++;
+          //     Board.delayTime[result[1][k]] = max;
+          //   }
+          //   this.setState({});
+          // });
           return;
         }
       }
